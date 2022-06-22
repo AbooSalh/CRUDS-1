@@ -54,6 +54,7 @@ if (localStorage.getItem("products")) {
     showData();
 }
 submit.addEventListener("click", () => {
+    
     let newProduct = {
         title     : title.value.toLowerCase(),
         price     : +price.value,
@@ -63,6 +64,7 @@ submit.addEventListener("click", () => {
         total     : +total.innerHTML,
         count     : +count.value,
         category  : category.value.toLowerCase(),
+        company   : "",
         date:{
             minutes: date.getMinutes(),
             hours  : date.getHours(),
@@ -71,22 +73,24 @@ submit.addEventListener("click", () => {
             year   : date.getFullYear(),
         }
     };
+    if (taxes.value == "") {
+        newProduct.taxes = 0;
+    }
+    if (ads.value == "") {
+        newProduct.ads = 0;
+    }
+    if (discount.value == "") {
+        newProduct.discount = 0;
+    }
+    if (category.value == "") {
+        newProduct.category = "No Category";
+    }
+    if (count.value == "") {
+        newProduct.count = 1;
+    }
+
+
     if (price.value !== "" && title.value !== "") {
-        if (taxes.value == "") {
-            taxes.value = 0;
-        }
-        if (ads.value == "") {
-            ads.value = 0;
-        }
-        if (discount.value == "") {
-            discount.value = 0;
-        }
-        if (count.value == "") {
-            count.value = 1;
-        }
-        if (category.value == "") {
-            category.value = "No Category";
-        }
         // the product Object
         if (mood == "create") {
             if (+newProduct.count > 1) {
@@ -146,6 +150,7 @@ function clearData() {
 }
 // read
 function showData() {
+    
     getTotal()
     let table = "";
     let productsC = "";
