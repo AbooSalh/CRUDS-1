@@ -148,6 +148,7 @@ function clearData() {
 function showData() {
     getTotal()
     let table = "";
+    let productsC = "";
     productsArray.forEach((ele, index) => {
         table += ` 
         <tr>
@@ -162,8 +163,34 @@ function showData() {
         <td><button onclick="updateData(${index})" id="update">update</button></td>
         <td><button onclick="deleteData(${index})" id="delete">delete</button></td>
         <tr>`;
+        productsC += `
+        <div class="product">
+            <div class="mainInfo">
+                <span class="id">ID : <span>${index + 1}</span></span>
+                <span class="title">Title : <span>${ele.title}</span> </span>
+                <span class="category">Category : <span>${ele.category}</span></span>
+            
+            </div>
+            <hr>
+            <div class="secondInfo">
+                <div class="price">Price : <span>${ele.price}$<span></div>
+                <div class="taxes">Taxes : <span>${(ele.price * +ele.taxes) / 100}$ (${ele.price}%)</span></div>
+                <div class="ads">Ads : <span>${(ele.price * +ele.ads) / 100}$ (${ele.ads}%)</span></div>
+                <div class="discount">Discount : <span>${(ele.price * +ele.discount) / 100}$ (${ele.discount}%)</span></div>
+            </div>
+            <hr>
+            <div class="lastInfo">
+                <div class="total">total : <span>${ele.total}$</span></div>
+                <div class="btns">
+                    <button onclick="updateData(${index})" id="update">update</button></td>
+                    <button onclick="deleteData(${index})" id="delete">delete</button></td>
+                </div>
+            </div>
+        </div>
+        `
     });
     document.getElementById("tbody").innerHTML = table;
+    document.getElementById("products").innerHTML = productsC;
     let deletBtn = document.querySelector("#deleteAll");
     if (productsArray.length > 0) {
         deletBtn.innerHTML = `<button style="background-color:red;" onclick="deleteAll()">Delete All (${productsArray.length})</button>`;
@@ -232,6 +259,7 @@ function getSearchMood(id){
 
 }
 function searchData(searchValue){
+    let productsC = ""
     let table = ""
     if (searchMood == "title"){
         productsArray.forEach((ele,index)=>{
@@ -249,6 +277,31 @@ function searchData(searchValue){
             <td><button onclick="updateData(${index})" id="update">update</button></td>
             <td><button onclick="deleteData(${index})" id="delete">delete</button></td>
             <tr>`;
+            productsC += `
+            <div class="product">
+                <div class="mainInfo">
+                    <span class="id">ID : ${index + 1}</span>
+                    <span class="title">Title : ${ele.title} </span>
+                    <span class="category">Category : ${ele.category}</span>
+                
+                </div>
+                <hr>
+                <div class="secondInfo">
+                    <div class="price">Price : ${ele.price}$</div>
+                    <div class="taxes">Taxes : ${(ele.price * +ele.taxes) / 100}$ (${ele.price}%)</div>
+                    <div class="ads">Ads : ${(ele.price * +ele.ads) / 100}$ (${ele.ads}%)</div>
+                    <div class="discount">Discount : ${(ele.price * +ele.discount) / 100}$ (${ele.discount}%)</div>
+                </div>
+                <hr>
+                <div class="lastInfo">
+                    <div class="total">total : ${ele.total}$</div>
+                    <div class="btns">
+                        <button onclick="updateData(${index})" id="update">update</button></td>
+                        <button onclick="deleteData(${index})" id="delete">delete</button></td>
+                    </div>
+                </div>
+            </div>
+            `
            } ;
 
             
@@ -271,6 +324,29 @@ function searchData(searchValue){
              <td><button onclick="updateData(${index})" id="update">update</button></td>
              <td><button onclick="deleteData(${index})" id="delete">delete</button></td>
              <tr>`;
+             productsC += `
+             <div class="product">
+                 <div class="mainInfo">
+                     <span class="id">ID : ${index + 1}</span>
+                     <span class="title">Title : ${ele.title} </span>
+                     <span class="category">Category : ${ele.category}</span>
+                 
+                 </div>
+                 <div class="secondInfo">
+                     <div class="price">Price : ${ele.price}$</div>
+                     <div class="taxes">Taxes : ${(ele.price * +ele.taxes) / 100}$ (${ele.price}%)</div>
+                     <div class="ads">Ads : ${(ele.price * +ele.ads) / 100}$ (${ele.ads}%)</div>
+                     <div class="discount">Discount : ${(ele.price * +ele.discount) / 100}$ (${ele.discount}%)</div>
+                 </div>
+                 <div class="lastInfo">
+                     <div class="total">total : ${ele.total}$</div>
+                     <div class="btns">
+                         <button onclick="updateData(${index})" id="update">update</button></td>
+                         <button onclick="deleteData(${index})" id="delete">delete</button></td>
+                     </div>
+                 </div>
+             </div>
+             `
             } 
  
              
@@ -278,6 +354,8 @@ function searchData(searchValue){
 
     }
     document.getElementById("tbody").innerHTML = table;
+    document.getElementById("products").innerHTML = productsC;
+
 
 }
 

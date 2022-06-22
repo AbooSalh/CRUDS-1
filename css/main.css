@@ -99,11 +99,75 @@ table th{
     }
     
 }
-@media (max-width:410px){
-    table {
-        width: 8px;
+@media (max-width:635px){
+    .products{
+        display: flex !important;
+    }
+    table{
+        display: none;
     }
 }
-th,td{
-    padding: 5px ;
+.products{
+    background-color: var(--main-color);
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    display: none;
+    flex-direction: column;
+}
+.product {
+    margin: 10px 0px;
+    background-color: var(--section-background);
+    padding: 10px;
+    
+}
+.products .mainInfo{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0px;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 20px;
+}
+.mainInfo span span , .secondInfo span , .lastInfo .span {
+    color: white;
+}
+.mainInfo span {
+    color: black;
+}
+.products .secondInfo{
+    display: flex;
+    justify-content: space-between;
+    color: rgb(0, 0, 0);
+}
+.lastInfo{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+
+}
+.lastInfo .total{
+    font-weight: 900;
+    font-size: 25px;
+}
+.lastInfo .btns{
+    display: flex;
+    width: 40%;
+}
+.lastInfo .btns button {
+    margin: 0 10px;
+
+}
+.total {
+    color: black ;
+    text-transform: capitalize;
+}
+.total span {
+    color: white;
+}
+hr {
+    height: 1px;
+    background-color: rgba(204, 204, 204, 0.455);
+    border: none;
+    margin: 15px 0;
 }
